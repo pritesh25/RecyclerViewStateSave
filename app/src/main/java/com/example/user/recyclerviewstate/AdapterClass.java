@@ -39,9 +39,11 @@ public class AdapterClass extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         if(viewHolder instanceof MyViewHolder)
         {
             MyViewHolder holder = (MyViewHolder)viewHolder;
-            holder.name.setText(list.get(i).getName());
+            DataModel    model  = list.get(i);
 
-            if (list.get(i).getChecked()) {
+            holder.name.setText(model.getName());
+
+            if (model.getChecked()) {
                 holder.checkBox.setChecked(true);
             }
             else {
