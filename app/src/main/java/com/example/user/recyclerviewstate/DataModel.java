@@ -2,11 +2,13 @@ package com.example.user.recyclerviewstate;
 
 class DataModel {
 
-    String name;
+    private String  name;
+    private int     Percentage;
     private boolean isChecked;
 
-    public DataModel(String name, boolean isChecked) {
+    public DataModel(String name, int percentage, boolean isChecked) {
         this.name = name;
+        Percentage = percentage;
         this.isChecked = isChecked;
     }
 
@@ -26,4 +28,11 @@ class DataModel {
         isChecked = checked;
     }
 
+    public int getPercentage() {
+        return Percentage;
+    }
+
+    public void setPercentage(int percentage) {
+        Percentage = percentage;
+    }
 }

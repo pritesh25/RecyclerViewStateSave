@@ -2,8 +2,12 @@ package com.example.user.recyclerviewstate;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
@@ -49,6 +53,8 @@ public class AdapterClass extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             else {
                 holder.checkBox.setChecked(false);
             }
+
+            holder.percentage.setText(String.valueOf(model.getPercentage()));
         }
 
     }
@@ -60,15 +66,16 @@ public class AdapterClass extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     private class MyViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView name;
+        private TextView name,percentage;
         private CheckBox checkBox;
 
         public MyViewHolder(View view)
         {
             super(view);
 
-            name     = view.findViewById(R.id.name);
-            checkBox = view.findViewById(R.id.checkbox);
+            name        = view.findViewById(R.id.name);
+            checkBox    = view.findViewById(R.id.checkbox);
+            percentage  = view.findViewById(R.id.tv_percentage);
 
             checkBox.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -89,25 +96,7 @@ public class AdapterClass extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                 }
             });
 
-            view.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    clickEvent();
-                }
-
-                private void clickEvent() {
-
-                    if (list.get(getAdapterPosition()).getChecked()) {
-                        checkBox.setChecked(false);
-                        list.get(getAdapterPosition()).setChecked(false);
-                    }
-                    else {
-                        checkBox.setChecked(true);
-                        list.get(getAdapterPosition()).setChecked(true);
-                    }
-                }
-            });
-
         }
+
     }
 }
